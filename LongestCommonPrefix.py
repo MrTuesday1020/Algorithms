@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/longest-common-prefix/
+"""
+
 def longestCommonPrefix(strs):
 	"""
 	:type strs: List[str]
