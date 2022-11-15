@@ -24,22 +24,10 @@ func PrintListNode(head *ListNode){
 }
 
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-	head := &ListNode{
-		Val: 0,
-		Next: nil,
-	}
+	head := &ListNode{}
 	tmp := head
-	
-	for list1 != nil || list2 != nil {
-		if list1 != nil && list2 != nil {
-			if list1.Val < list2.Val {
-				tmp.Next = list1
-				list1 = list1.Next		
-			} else {
-				tmp.Next = list2
-				list2 = list2.Next
-			}
-		} else if list1 != nil {
+	for list1 != nil && list2 != nil {
+		if list1.Val < list2.Val {
 			tmp.Next = list1
 			list1 = list1.Next
 		} else {
@@ -48,7 +36,12 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 		}
 		tmp = tmp.Next
 	}
-	
+	if list1 != nil {
+		tmp.Next = list1
+	}
+	if list2 != nil {
+		tmp.Next = list2
+	}
 	return head.Next
 }
 

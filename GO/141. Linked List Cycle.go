@@ -28,6 +28,7 @@ func hasCycle(head *ListNode) bool {
 	slow, fast := head, head.Next
 	for fast != slow {
 		if fast == nil || fast.Next == nil {
+			// has en end node, which means no cycle in the list
 			return false
 		}
 		slow = slow.Next
