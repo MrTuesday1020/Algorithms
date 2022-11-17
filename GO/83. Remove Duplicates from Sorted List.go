@@ -8,6 +8,9 @@ package main
 * }
 */
 func deleteDuplicates(head *ListNode) *ListNode {
+	if head == nil {
+		return nil
+	}
 	for node := head; node.Next != nil; {
 		if node.Val == node.Next.Val {
 			node.Next = node.Next.Next
