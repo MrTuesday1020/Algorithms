@@ -9,19 +9,17 @@ package main
  * }
  */
 func maxDepth(root *TreeNode) int {
-	ans := 0
-	var recursion func(*TreeNode, int)
-	recursion = func(node *TreeNode, depth int) {
-		if node == nil {
-			return
+	var dfs func(*TreeNode) int
+	dfs = func(root *TreeNode) int {
+		if root == nil {
+			return 0
 		}
-		depth += 1
-		ans = max(ans, depth)
-		recursion(node.Left, depth)
-		recursion(node.Right, depth)
+		left := dfs(root.Left)
+		right := dfs(root.Right)
+		return max(left, right) + 1
 	}
-	recursion(root, 0)
-	return ans
+	height := dfs(root)
+	return height
 }
 
 func max(i int, j int) int {
